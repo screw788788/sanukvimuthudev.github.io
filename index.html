@@ -1,0 +1,2136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10101b">
+<meta name="description" content="Sanuk Vimuthu — Creative design and web development portfolio.">
+<title>Sanuk Vimuthu | Dev</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --bg: #10101b;
+  --text: #f7f7ff;
+  --muted: #a5a5b8;
+  --accent: #ff9e45;
+  --accent2: #ffcf55;
+  --border: rgba(255,255,255,.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  cursor: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: #151515;
+}
+
+/* =================================
+   BACKGROUND AND PARTICLES
+================================= */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.background-glow {
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .15;
+  pointer-events: none;
+  z-index: -2;
+  animation: glowMove 16s ease-in-out infinite alternate;
+}
+
+.glow-one {
+  background: #ff963d;
+  top: -180px;
+  left: -180px;
+}
+
+.glow-two {
+  background: #7956e8;
+  right: -200px;
+  bottom: -180px;
+  animation-delay: -8s;
+}
+
+@keyframes glowMove {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(100px,80px) scale(1.25); }
+}
+
+/* =================================
+   LIQUID GLASS
+================================= */
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.09),
+    rgba(255,255,255,.025)
+  );
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.12),
+    0 15px 40px rgba(0,0,0,.13);
+}
+
+/* =================================
+   CUSTOM CURSOR
+================================= */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 99999;
+  transform: translate(-50%,-50%);
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: white;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,.65);
+  transition:
+    width .35s cubic-bezier(.2,.8,.2,1),
+    height .35s cubic-bezier(.2,.8,.2,1),
+    background .35s,
+    border-color .35s;
+}
+
+.cursor-ring.hover {
+  width: 58px;
+  height: 58px;
+  background: rgba(255,158,69,.12);
+  border-color: var(--accent);
+}
+
+@media (hover: none), (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* =================================
+   NAVIGATION
+================================= */
+
+.header-glass {
+  position: fixed;
+  z-index: 1000;
+  top: 16px;
+  left: 5%;
+  width: 90%;
+  padding: 12px 22px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 20px;
+  background: rgba(14,14,25,.48);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  transition: background .4s, border-color .4s;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.brand img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.nav-glass-box {
+  padding: 6px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.055);
+  backdrop-filter: blur(25px) saturate(170%);
+  -webkit-backdrop-filter: blur(25px) saturate(170%);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.12),
+    0 8px 25px rgba(0,0,0,.12);
+  transition:
+    background .45s ease,
+    border-color .45s ease,
+    box-shadow .45s ease,
+    transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.nav-glass-box:hover {
+  background: rgba(255,255,255,.11);
+  border-color: rgba(255,190,110,.4);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.17),
+    0 0 25px rgba(255,158,69,.12),
+    0 12px 35px rgba(0,0,0,.2);
+  transform: translateY(-2px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 11px 16px;
+  border-radius: 10px;
+  color: rgba(255,255,255,.7);
+  font-size: 12px;
+  transition: color .3s, background .3s, transform .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: white;
+  background: rgba(255,255,255,.10);
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+/* =================================
+   COMMON SECTION STYLES
+================================= */
+
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 115px 7%;
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(34px,5vw,55px);
+  letter-spacing: -2px;
+  margin-bottom: 40px;
+}
+
+.accent,
+.gradient-text {
+  background: linear-gradient(100deg,var(--accent),var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.status-dot1 {
+  width: 9px;
+  height: 9px;
+  background-color: #FF9500;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(255,149,0,.5);
+}
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 150px;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 850px;
+}
+
+.hero-logo {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 25px;
+  box-shadow: 0 0 40px rgba(255,158,69,.25);
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 15px;
+  border-radius: 30px;
+  font-size: 12px;
+  color: #ddd;
+  margin-bottom: 25px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5ae6a1;
+  box-shadow: 0 0 12px #5ae6a1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .35; transform: scale(.7); }
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(52px,9vw,105px);
+  line-height: 1.03;
+  letter-spacing: -6px;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero-description {
+  color: var(--muted);
+  max-width: 550px;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 25px 0 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  border-radius: 12px;
+  padding: 14px 23px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .35s;
+}
+
+.btn-primary {
+  background: linear-gradient(110deg,#ff9945,#ffd15a);
+  color: #17121a;
+  box-shadow: 0 8px 30px rgba(255,158,69,.17);
+}
+
+.btn-secondary {
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.025);
+  box-shadow: 0 12px 35px rgba(255,158,69,.2);
+}
+
+/* =================================
+   ABOUT
+================================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr .85fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.about-copy {
+  color: var(--muted);
+  line-height: 2;
+  font-size: 15px;
+}
+
+.about-copy p + p {
+  margin-top: 18px;
+}
+
+.about-photo-wrap {
+  position: relative;
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo-glow {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  background: var(--accent);
+  filter: blur(90px);
+  opacity: .17;
+  border-radius: 50%;
+}
+
+.about-photo {
+  position: relative;
+  width: min(100%,370px);
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .4s, box-shadow .4s;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .7s ease;
+}
+
+.about-photo:hover {
+  border-color: rgba(255,190,110,.5);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3), 0 0 35px rgba(255,158,69,.13);
+}
+
+.about-photo:hover img {
+  transform: scale(1.035);
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(15,15,25,.48);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* =================================
+   SKILLS
+================================= */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  border-radius: 18px;
+  padding: 30px;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .4s, background .4s;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,158,69,.5);
+}
+
+.skill-icon {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.skill-card:hover .skill-icon,
+.social-link:hover i,
+.about-card:hover i {
+  animation: wobble .75s ease;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0) scale(1); }
+  15% { transform: rotate(-14deg) scale(1.12); }
+  30% { transform: rotate(12deg) scale(1.12); }
+  45% { transform: rotate(-9deg); }
+  60% { transform: rotate(7deg); }
+  75% { transform: rotate(-4deg); }
+  100% { transform: rotate(0) scale(1); }
+}
+
+.skill-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.skill-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.tech {
+  padding: 10px 16px;
+  border-radius: 9px;
+  font-size: 12px;
+  color: #ccc;
+  transition: .3s;
+}
+
+.tech:hover {
+  color: white;
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* =================================
+   PROJECTS
+================================= */
+
+.projects-intro {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: -20px;
+  margin-bottom: 35px;
+  max-width: 550px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 22px;
+}
+
+.project-card {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .4s;
+}
+
+.project-card:hover {
+  transform: translateY(-9px);
+  border-color: rgba(255,158,69,.55);
+}
+
+.project-visual {
+  min-height: 220px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.heritage-visual {
+  background: radial-gradient(circle at 50% 50%,rgba(255,196,92,.3),transparent 55%), linear-gradient(135deg,#344b40,#172d27);
+}
+
+.lumen-visual {
+  background: radial-gradient(circle at 50% 50%,rgba(255,255,255,.2),transparent 55%), linear-gradient(135deg,#38445c,#151c30);
+}
+
+.launcher-visual {
+  background: radial-gradient(circle at 50% 50%,rgba(255,158,69,.3),transparent 55%), linear-gradient(135deg,#48302b,#17121d);
+}
+
+.project-symbol {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(20px);
+  font-size: 42px;
+  color: white;
+  transition: transform .5s;
+}
+
+.project-card:hover .project-symbol {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.project-number {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  color: rgba(255,255,255,.65);
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 13px;
+}
+
+.project-content {
+  padding: 27px;
+}
+
+.project-category {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.project-content h3 {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: 24px;
+  margin: 12px 0;
+}
+
+.project-content p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.project-tags span {
+  font-size: 10px;
+  color: #ddd;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  padding: 7px 11px;
+  border-radius: 7px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  transition: gap .3s;
+}
+
+.project-link:hover {
+  gap: 16px;
+}
+
+/* =================================
+   CONTACT
+================================= */
+
+.contact-box {
+  padding: 60px 30px;
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-box h2 {
+  font-family: 'Space Grotesk',sans-serif;
+  font-size: clamp(32px,5vw,55px);
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+
+.contact-box p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 17px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #ddd;
+  transition: .35s;
+}
+
+.social-link i {
+  display: inline-block;
+  font-size: 18px;
+}
+
+.social-link:hover {
+  transform: translateY(-6px);
+  color: white;
+  border-color: var(--accent);
+  background: rgba(255,158,69,.12);
+}
+
+/* =================================
+   COMMUNITY FEEDBACK
+================================= */
+
+.feedback-section {
+  position: relative;
+}
+
+.feedback-intro {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 620px;
+  margin-top: -20px;
+  margin-bottom: 35px;
+}
+
+.feedback-layout {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.feedback-info {
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.feedback-info-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--accent2);
+  font-size: 25px;
+  background: rgba(255,158,69,.1);
+  border: 1px solid rgba(255,158,69,.2);
+  margin-bottom: 25px;
+}
+
+.feedback-info h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.feedback-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.feedback-note {
+  padding: 18px;
+  margin-top: 35px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,158,69,.2);
+  background: rgba(255,158,69,.07);
+  color: #e7d6c6;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.feedback-form {
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 21px;
+}
+
+.form-group label {
+  display: block;
+  color: #eae8f2;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 15px;
+  border-radius: 11px;
+  outline: none;
+  color: white;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.12);
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color .3s, background .3s, box-shadow .3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,.07);
+  box-shadow: 0 0 0 3px rgba(255,158,69,.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #77778a;
+}
+
+.form-group select option {
+  color: white;
+  background: #171725;
+}
+
+.form-group textarea {
+  min-height: 135px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating button {
+  border: 0;
+  background: transparent;
+  color: #555568;
+  font-size: 29px;
+  padding: 0 2px;
+  transition: color .2s, transform .2s;
+  cursor: pointer;
+}
+
+.rating button:hover,
+.rating button.selected {
+  color: var(--accent2);
+  transform: scale(1.13);
+}
+
+.rating-hint {
+  color: var(--muted);
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.feedback-submit {
+  width: 100%;
+  border: none;
+  border-radius: 11px;
+  padding: 16px 20px;
+  color: #17121a;
+  background: linear-gradient(110deg,#ff9945,#ffd15a);
+  font-size: 12px;
+  font-weight: 800;
+  transition: transform .3s, box-shadow .3s, opacity .3s;
+}
+
+.feedback-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(255,158,69,.2);
+}
+
+.feedback-submit:disabled {
+  opacity: .55;
+  cursor: wait;
+  transform: none;
+}
+
+.feedback-status {
+  display: none;
+  padding: 14px;
+  margin-top: 16px;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.feedback-status.success {
+  display: block;
+  color: #9df4b5;
+  border: 1px solid rgba(90,230,161,.22);
+  background: rgba(90,230,161,.08);
+}
+
+.feedback-status.error {
+  display: block;
+  color: #ffaaaa;
+  border: 1px solid rgba(255,100,100,.22);
+  background: rgba(255,100,100,.08);
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 7%;
+  text-align: center;
+  color: #858597;
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+
+footer span {
+  color: var(--accent);
+}
+
+/* =================================
+   REPEATABLE SCROLL ANIMATIONS
+================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity .85s cubic-bezier(.2,.7,.2,1),
+    transform .85s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width:768px) {
+
+  body {
+    cursor: auto;
+  }
+
+  .header-glass {
+    left: 3%;
+    width: 94%;
+    padding: 12px 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-glass-box {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    padding: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: .3s ease;
+  }
+
+  .nav-glass-box.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links a {
+    text-align: center;
+  }
+
+  section {
+    padding: 95px 6%;
+  }
+
+  .hero {
+    min-height: 95vh;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-photo {
+    width: min(85%,350px);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box {
+    padding: 45px 20px;
+  }
+}
+
+@media(max-width:480px) {
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 54px;
+  }
+
+  .hero-logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .about-photo {
+    width: 100%;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-link {
+    width: 190px;
+  }
+
+  .feedback-form,
+  .feedback-info {
+    padding: 23px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media(prefers-reduced-motion:reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-photo {
+    transform: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAVIGATION -->
+
+<header class="header-glass">
+  <nav class="navbar">
+
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="Sanuk logo">
+      SANUK<span>.</span>
+    </a>
+
+    <div class="nav-glass-box">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+    <img src="logo.png" class="hero-logo" alt="Sanuk logo">
+
+    <div class="availability glass">
+      <span class="status-dot"></span>
+      Creative mind • Always learning
+    </div>
+
+    <h1>
+      Hello, I'm
+      <span class="accent">Sanuk Vimuthu.</span>
+    </h1>
+
+    <p class="hero-description">
+      A creative individual passionate about graphic design,
+      web development, app development and modern digital experiences.
+      I love turning ideas into beautiful things.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#contact" class="btn btn-primary">
+        Let's connect <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+      <a href="#about" class="btn btn-secondary glass">
+        Explore more <i class="fa-solid fa-arrow-down"></i>
+      </a>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="reveal">
+    <div class="section-label">01 / ABOUT ME</div>
+    <h2 class="section-title">
+      A little about <span class="accent">me.</span>
+    </h2>
+  </div>
+
+  <div class="about-grid">
+
+    <div class="about-copy reveal">
+
+      <p>
+        Hey! I'm Sanuk Vimuthu, a creative individual interested
+        in technology, digital experiences and modern design.
+      </p>
+
+      <p>
+        I enjoy exploring new technologies, experimenting with
+        creative ideas and developing projects that combine
+        functionality with beautiful visuals.
+      </p>
+
+      <p>
+        My goal is to keep learning, improve my skills and
+        create things that make a difference.
+      </p>
+
+    </div>
+
+    <div class="about-photo-wrap reveal">
+
+      <div class="about-photo-glow"></div>
+
+      <div class="about-photo glass" id="aboutPhoto">
+
+        <img src="my.jpg" alt="Sanuk Vimuthu">
+
+        <div class="photo-caption">
+          <span class="photo-dot"></span>
+          SANUK VIMUTHU
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <div class="reveal">
+    <div class="section-label">02 / WHAT I DO</div>
+    <h2 class="section-title">
+      My <span class="accent">skills.</span>
+    </h2>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-card glass reveal">
+      <i class="fa-solid fa-pen-nib skill-icon"></i>
+      <h3>Graphic Design</h3>
+      <p>
+        Creating modern visuals, logos, posters and
+        creative digital artwork.
+      </p>
+    </div>
+
+    <div class="skill-card glass reveal">
+      <i class="fa-solid fa-code skill-icon"></i>
+      <h3>Web Development</h3>
+      <p>
+        Building responsive websites with clean code,
+        interactive elements and smooth animations.
+      </p>
+    </div>
+
+    <div class="skill-card glass reveal">
+      <i class="fa-solid fa-layer-group skill-icon"></i>
+      <h3>UI / UX Design</h3>
+      <p>
+        Designing modern interfaces with attention
+        to usability, detail and visual quality.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="reveal">
+
+    <h3 style="margin-top:45px;font-family:'Space Grotesk';">
+      Technologies & Tools
+    </h3>
+
+    <div class="tech-stack">
+      <span class="tech glass">HTML</span>
+      <span class="tech glass">CSS</span>
+      <span class="tech glass">JavaScript</span>
+      <span class="tech glass">React</span>
+      <span class="tech glass">Next.js</span>
+      <span class="tech glass">TypeScript</span>
+      <span class="tech glass">Figma</span>
+      <span class="tech glass">Photoshop</span>
+      <span class="tech glass">Illustrator</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+  <div class="reveal">
+    <div class="section-label">03 / MY CREATIVE WORK</div>
+
+    <h2 class="section-title">
+      Featured <span class="accent">projects.</span>
+    </h2>
+
+    <p class="projects-intro">
+      A collection of ideas, experiments and digital
+      experiences that represent my creativity.
+    </p>
+  </div>
+
+  <!-- Projects are loaded from Google Sheets -->
+
+  <div class="projects-grid" id="projectsGrid">
+    <div class="project-card glass" style="padding:30px;">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      Loading projects...
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <div class="contact-box glass reveal">
+
+    <div class="section-label">04 / GET IN TOUCH</div>
+
+    <h2>
+      Let's create something <span class="accent">amazing.</span>
+    </h2>
+
+    <p>
+      Have an idea, a project or just want to say hello?
+      Connect with me through any of these platforms.
+    </p>
+
+
+
+    <div class="social-links">
+
+      <a href="https://wa.me/qr/M47UQAYMUMW3E1"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="social-link glass">
+        <i class="fa-brands fa-whatsapp"></i>
+        WhatsApp
+      </a>
+
+      <a href="https://www.instagram.com/vimuthu_788?dlrf=M3hrdmdqeDZoYTYx"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="social-link glass">
+        <i class="fa-brands fa-instagram"></i>
+        Instagram
+      </a>
+
+      <a href="tel:+94740974110" class="social-link glass">
+        <i class="fa-solid fa-phone"></i>
+        074 097 4110
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- COMMUNITY FEEDBACK -->
+
+<section id="feedback" class="feedback-section">
+
+  <div class="reveal">
+
+    <div class="section-label">05 / YOUR VOICE MATTERS</div>
+
+    <h2 class="section-title">
+      Community <span class="accent">Feedback.</span>
+    </h2>
+
+    <p class="feedback-intro">
+      Have a suggestion, spotted something that needs fixing,
+      or simply want to share your thoughts about my website?
+      I'd love to hear from you.
+    </p>
+
+  </div>
+
+  <div class="feedback-layout">
+
+    <div class="feedback-info glass reveal">
+
+      <div>
+        <div class="feedback-info-icon">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+
+        <h3>
+          Help me make things <span class="accent">better.</span>
+        </h3>
+
+        <p>
+          Your feedback helps me improve my personal website
+          and future projects. Share your ideas, report issues
+          or suggest something new.
+        </p>
+      </div>
+
+      <div class="feedback-note">
+        <i class="fa-solid fa-lightbulb"></i>
+        Every suggestion matters. Thank you for taking the
+        time to help me improve.
+      </div>
+
+    </div>
+
+    <form class="feedback-form glass reveal" id="feedbackForm">
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="feedbackName">Your name <span style="color:var(--muted)">(optional)</span></label>
+          <input
+            type="text"
+            id="feedbackName"
+            name="name"
+            maxlength="80"
+            placeholder="What should I call you?">
+        </div>
+
+        <div class="form-group">
+          <label for="feedbackEmail">Email <span style="color:var(--muted)">(optional)</span></label>
+          <input
+            type="email"
+            id="feedbackEmail"
+            name="email"
+            maxlength="150"
+            placeholder="you@example.com">
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="feedbackCategory">Feedback category</label>
+
+        <select id="feedbackCategory" name="category" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="Website suggestion">Website suggestion</option>
+          <option value="Feature request">Feature request</option>
+          <option value="Bug report">Bug report</option>
+          <option value="UI/UX suggestion">UI/UX suggestion</option>
+          <option value="Project feedback">Project feedback</option>
+          <option value="General feedback">General feedback</option>
+          <option value="Other">Other</option>
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Your experience</label>
+
+        <div class="rating" id="rating" role="group" aria-label="Rate the website">
+          <button type="button" data-rating="1" aria-label="1 star">★</button>
+          <button type="button" data-rating="2" aria-label="2 stars">★</button>
+          <button type="button" data-rating="3" aria-label="3 stars">★</button>
+          <button type="button" data-rating="4" aria-label="4 stars">★</button>
+          <button type="button" data-rating="5" aria-label="5 stars">★</button>
+          <span class="rating-hint" id="ratingHint">Select a rating</span>
+        </div>
+
+        <input type="hidden" id="ratingValue" name="rating" value="0">
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="feedbackMessage">Your message</label>
+
+        <textarea
+          id="feedbackMessage"
+          name="message"
+          placeholder="Write your feedback, suggestion or idea here..."
+          required
+          minlength="5"
+          maxlength="3000"></textarea>
+
+      </div>
+
+      <button type="submit" class="feedback-submit" id="feedbackSubmit">
+        <i class="fa-solid fa-paper-plane"></i>
+        Send feedback
+      </button>
+
+      <div
+        class="feedback-status"
+        id="feedbackStatus"
+        role="status"
+        aria-live="polite"></div>
+
+    </form>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  Designed with creativity by <span>Sanuk Vimuthu</span>
+  · © <span id="year"></span>
+</footer>
+
+<script>
+
+/* =================================
+   GOOGLE SHEETS CONFIGURATION
+================================= */
+
+// Paste your deployed Google Apps Script URL here.
+// It should end in /exec.
+
+const GOOGLE_SCRIPT_URL ="https://script.google.com/macros/s/AKfycby4aIBkHNaGGS2fKZWKpxjKD7S0PxlgyZoSdGl1R3J4g3gBzkvwGtWWlE_bdYltHntBaw/exec";
+
+/* =================================
+   1. CUSTOM SMOOTH CURSOR
+================================= */
+
+const dot = document.querySelector('.cursor-dot');
+const ring = document.querySelector('.cursor-ring');
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let ringX = mouseX;
+let ringY = mouseY;
+
+document.addEventListener('mousemove', event => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+
+  dot.style.left = mouseX + 'px';
+  dot.style.top = mouseY + 'px';
+});
+
+function cursorAnimation() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+
+  requestAnimationFrame(cursorAnimation);
+}
+
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  cursorAnimation();
+}
+
+document.querySelectorAll(
+  'a, button, .skill-card, .project-card, .about-photo, .tech'
+).forEach(item => {
+  item.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  item.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+
+/* =================================
+   2. PARTICLE BACKGROUND
+================================= */
+
+const PARTICLE_INTENSITY = 0.65;
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+function getParticleCount() {
+  return Math.round(
+    (window.innerWidth < 700 ? 30 : 65) * PARTICLE_INTENSITY
+  );
+}
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvasWidth = window.innerWidth;
+  canvasHeight = window.innerHeight;
+
+  canvas.width = canvasWidth * dpr;
+  canvas.height = canvasHeight * dpr;
+
+  canvas.style.width = canvasWidth + 'px';
+  canvas.style.height = canvasHeight + 'px';
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function createParticles() {
+  particles = [];
+
+  for (let i = 0; i < getParticleCount(); i++) {
+    particles.push({
+      x: Math.random() * canvasWidth,
+      y: Math.random() * canvasHeight,
+      size: Math.random() * 2 + .5,
+      speedX: (Math.random() - .5) * .35,
+      speedY: (Math.random() - .5) * .35,
+      opacity: Math.random() * .5 + .15
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+  particles.forEach((particle, i) => {
+    particle.x += particle.speedX;
+    particle.y += particle.speedY;
+
+    if (particle.x < 0 || particle.x > canvasWidth) {
+      particle.speedX *= -1;
+    }
+
+    if (particle.y < 0 || particle.y > canvasHeight) {
+      particle.speedY *= -1;
+    }
+
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,190,110,${particle.opacity})`;
+    ctx.fill();
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const other = particles[j];
+
+      const dx = particle.x - other.x;
+      const dy = particle.y - other.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 115) {
+        ctx.beginPath();
+        ctx.moveTo(particle.x, particle.y);
+        ctx.lineTo(other.x, other.y);
+
+        ctx.strokeStyle =
+          `rgba(255,180,110,${(1 - distance / 115) * .12})`;
+
+        ctx.lineWidth = .7;
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(drawParticles);
+}
+
+resizeCanvas();
+createParticles();
+drawParticles();
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  createParticles();
+});
+
+
+/* =================================
+   3. SCROLL REVEAL
+================================= */
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -35px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(element => {
+  revealObserver.observe(element);
+});
+
+
+/* =================================
+   4. MOBILE NAVIGATION
+================================= */
+
+const menuToggle = document.getElementById('menuToggle');
+const navGlass = document.querySelector('.nav-glass-box');
+
+menuToggle.addEventListener('click', () => {
+  const open = navGlass.classList.toggle('open');
+
+  menuToggle.setAttribute('aria-expanded', open);
+
+  menuToggle.innerHTML = open
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navGlass.classList.remove('open');
+
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  });
+});
+
+
+/* =================================
+   5. ACTIVE NAVIGATION ON SCROLL
+================================= */
+
+const sections = document.querySelectorAll('main section[id]');
+const navItems = document.querySelectorAll('.nav-links a');
+
+const activeObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navItems.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === '#' + entry.target.id
+        );
+      });
+    }
+  });
+}, {
+  threshold: 0,
+  rootMargin: '-35% 0px -55% 0px'
+});
+
+sections.forEach(section => activeObserver.observe(section));
+
+
+/* =================================
+   6. PHOTO TILT
+================================= */
+
+const photo = document.getElementById('aboutPhoto');
+
+const canTilt = window.matchMedia(
+  '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+).matches;
+
+if (photo && canTilt) {
+  photo.addEventListener('mousemove', event => {
+    const rect = photo.getBoundingClientRect();
+
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+
+    const rotateY = (x - .5) * 5;
+    const rotateX = (.5 - y) * 5;
+
+    photo.style.transform =
+      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.015)`;
+  });
+
+  photo.addEventListener('mouseleave', () => {
+    photo.style.transform =
+      'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+  });
+}
+
+
+/* =================================
+   7. FEEDBACK STAR RATING
+================================= */
+
+let selectedRating = 0;
+
+const ratingButtons = document.querySelectorAll('#rating button');
+const ratingValue = document.getElementById('ratingValue');
+const ratingHint = document.getElementById('ratingHint');
+
+const ratingLabels = [
+  '',
+  'Poor',
+  'Fair',
+  'Good',
+  'Very good',
+  'Excellent'
+];
+
+ratingButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    selectedRating = Number(button.dataset.rating);
+    ratingValue.value = selectedRating;
+
+    ratingButtons.forEach(star => {
+      star.classList.toggle(
+        'selected',
+        Number(star.dataset.rating) <= selectedRating
+      );
+    });
+
+    ratingHint.textContent = ratingLabels[selectedRating];
+  });
+});
+
+
+/* =================================
+   8. FEEDBACK FORM SUBMISSION
+================================= */
+
+const feedbackForm = document.getElementById('feedbackForm');
+const feedbackStatus = document.getElementById('feedbackStatus');
+const feedbackSubmit = document.getElementById('feedbackSubmit');
+
+feedbackForm.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  if (!feedbackForm.reportValidity()) return;
+
+  if (selectedRating < 1 || selectedRating > 5) {
+    feedbackStatus.className = 'feedback-status error';
+    feedbackStatus.textContent =
+      'Please select a star rating before submitting.';
+    return;
+  }
+
+  if (
+    !GOOGLE_SCRIPT_URL ||
+    GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'
+  ) {
+    feedbackStatus.className = 'feedback-status error';
+    feedbackStatus.textContent =
+      'The feedback form is ready, but the Google Sheets connection has not been configured yet.';
+    return;
+  }
+
+  const formData = new FormData(feedbackForm);
+  const data = new URLSearchParams();
+
+  for (const [key, value] of formData.entries()) {
+    data.append(key, value);
+  }
+
+  feedbackSubmit.disabled = true;
+  feedbackSubmit.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+  feedbackStatus.className = 'feedback-status';
+  feedbackStatus.textContent = '';
+
+  try {
+    // Sends a form-encoded POST to Google Apps Script.
+    // no-cors prevents the browser from reading the response.
+
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data
+    });
+
+    feedbackStatus.className = 'feedback-status success';
+    feedbackStatus.textContent =
+      'Thank you! Your feedback request has been sent. I appreciate your support.';
+
+    feedbackForm.reset();
+
+    selectedRating = 0;
+    ratingValue.value = '0';
+    ratingHint.textContent = 'Select a rating';
+
+    ratingButtons.forEach(star => {
+      star.classList.remove('selected');
+    });
+
+  } catch (error) {
+    feedbackStatus.className = 'feedback-status error';
+    feedbackStatus.textContent =
+      'Something went wrong while sending your feedback. Please try again.';
+  } finally {
+    feedbackSubmit.disabled = false;
+    feedbackSubmit.innerHTML =
+      '<i class="fa-solid fa-paper-plane"></i> Send feedback';
+  }
+});
+
+
+/* =================================
+   9. CURRENT YEAR
+================================= */
+
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+
+/* =================================
+   10. REDUCED MOTION
+================================= */
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal').forEach(element => {
+    element.classList.add('visible');
+  });
+
+  revealObserver.disconnect();
+}
+
+/* =================================
+   LOAD PROJECTS FROM GOOGLE SHEETS
+================================= */
+
+
+const projectsGrid = document.getElementById("projectsGrid");
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[char]);
+}
+
+function loadProjects() {
+  if (!projectsGrid) {
+    console.error("Projects container not found!");
+    return;
+  }
+
+  const callbackName = "handlePortfolioProjects";
+
+  window[callbackName] = function(projects) {
+    const script = document.getElementById("projectsLoader");
+    if (script) script.remove();
+
+    delete window[callbackName];
+
+    if (!Array.isArray(projects)) {
+      projectsGrid.innerHTML = "<p>Invalid projects response.</p>";
+      return;
+    }
+
+    if (projects.length === 0) {
+      projectsGrid.innerHTML = "<p>New projects coming soon!</p>";
+      return;
+    }
+
+    projectsGrid.innerHTML = projects.map((project, index) => {
+      const title = escapeHTML(project.title);
+      const category = escapeHTML(project.category);
+      const description = escapeHTML(project.description);
+
+      const icon = /^fa-[a-z0-9-]+$/.test(project.icon || "")
+        ? project.icon
+        : "fa-folder";
+
+      const tags = String(project.technologies || "")
+        .split(",")
+        .map(tag => tag.trim())
+        .filter(Boolean)
+        .map(tag => `<span>${escapeHTML(tag)}</span>`)
+        .join("");
+
+      let link = String(project.link || "#contact").trim();
+
+      if (
+        !link.startsWith("#") &&
+        !/^https?:\/\//i.test(link)
+      ) {
+        link = "#contact";
+      }
+
+      const external = /^https?:\/\//i.test(link);
+
+      return `
+        <article class="project-card glass reveal">
+          <div class="project-visual heritage-visual">
+            <div class="project-symbol">
+              <i class="fa-solid ${icon}"></i>
+            </div>
+            <span class="project-number">
+              ${String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div class="project-content">
+            <span class="project-category">${category}</span>
+            <h3>${title}</h3>
+            <p>${description}</p>
+
+            <div class="project-tags">${tags}</div>
+
+            <a href="${escapeHTML(link)}"
+               class="project-link"
+               ${external ? 'target="_blank" rel="noopener noreferrer"' : ""}>
+              Explore project
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    if (typeof revealObserver !== "undefined") {
+      projectsGrid.querySelectorAll(".reveal").forEach(element => {
+        revealObserver.observe(element);
+      });
+    }
+
+    console.log("Projects loaded successfully:", projects);
+  };
+
+  const script = document.createElement("script");
+  script.id = "projectsLoader";
+  script.async = true;
+
+  script.src =
+    GOOGLE_SCRIPT_URL +
+    "?callback=" + callbackName +
+    "&t=" + Date.now();
+
+  script.onerror = function() {
+    projectsGrid.innerHTML =
+      "<p>Could not connect to the Projects sheet.</p>";
+
+    delete window[callbackName];
+    script.remove();
+
+    console.error("Projects API request failed.");
+  };
+
+  document.body.appendChild(script);
+}
+
+loadProjects();
+
+
+</script>
+
+</body>
+</html>
